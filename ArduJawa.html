@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArduJawa - Konversi Bahasa Arduino ke Bahasa Jawa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .jawa-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        
+        .download-btn {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f1f5f9;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="w-full max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-indigo-700 mb-2">ArduJawa</h1>
+            <p class="text-slate-600">Konversi Bahasa Arduino ke Bahasa Jawa</p>
+        </div>
+        
+        <div class="overflow-x-auto mb-8">
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="bg-indigo-100">
+                        <th class="p-3 text-left font-semibold text-indigo-800 border-b border-indigo-200">Bahasa Asli</th>
+                        <th class="p-3 text-left font-semibold text-indigo-800 border-b border-indigo-200">Bahasa Jawa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">OUTPUT</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">metu</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">INPUT</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">mlebu</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">HIGH</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">dhuwur</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">LOW</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">endhek</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">true</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">bener</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">false</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">salah</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">pinMode</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">atur</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">digitalWrite</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">tulis</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">delay</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">enteni</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">Serial.begin</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">wiwiti</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">Serial.print</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">cetak</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">Serial.println</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">cetak_baris</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">analogRead</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">maca_analog</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">analogWrite</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">kirim</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">setup()</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">siapkan()</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">loop()</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">terus()</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3 border-b border-slate-200"><code class="code-block">int</code></td>
+                        <td class="p-3 border-b border-slate-200"><span class="jawa-text">nomer</span></td>
+                    </tr>
+                    <tr class="hover:bg-indigo-50">
+                        <td class="p-3"><code class="code-block">void</code></td>
+                        <td class="p-3"><span class="jawa-text">fungsi</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="text-center">
+            <a href="https://drive.google.com/file/d/1llVV2cXi6bHLE1POgcbPmAgUZHUapAts/view?usp=sharing" class="download-btn bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                Download Library
+            </a>
+        </div>
+    </div>
+</body>
+</html>
