@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ardubali - Konversi Arduino ke Bahasa Bali</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .bali-pattern {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiNmZmQ4MDAiLz48cGF0aCBkPSJNMzAgMTVMMTUgMzBMMzAgNDVMNDUgMzBMMzAgMTVaIiBmaWxsPSIjYzEwMzA5IiBvcGFjaXR5PSIwLjIiLz48cGF0aCBkPSJNMTUgMTVMMzAgMzBMMTUgNDVMMCAzMEwxNSAxNVoiIGZpbGw9IiM4YTAyMDIiIG9wYWNpdHk9IjAuMiIvPjxwYXRoIGQ9Ik00NSAxNUwzMCAzMEw0NSA0NUw2MCAzMEw0NSAxNVoiIGZpbGw9IiM1YzMwMDAiIG9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
+            opacity: 0.1;
+        }
+        .font-bali {
+            font-family: 'Baloo 2', cursive;
+        }
+        .btn-bali {
+            background: linear-gradient(to right, #c10309, #8a5002);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .btn-bali:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .code-block {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            border-left: 4px solid #c10309;
+        }
+        .tab-active {
+            border-bottom: 3px solid #ffb700;
+            font-weight: 600;
+            color: #c10309;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+    <!-- Background pattern -->
+    <div class="fixed inset-0 bali-pattern pointer-events-none"></div>
+    
+    <!-- Header -->
+    <header class="bg-white shadow-sm relative z-10">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-red-800 font-bali">Ardubali</h1>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#pelajari" class="text-gray-800 hover:text-yellow-600 font-medium py-2 px-1 tab-active">Pelajari</a>
+                    <a href="#download" class="text-gray-800 hover:text-yellow-600 font-medium py-2 px-1">Download</a>
+                    <a href="#modifikasi" class="text-gray-800 hover:text-yellow-600 font-medium py-2 px-1">Modifikasi</a>
+                    <a href="https://ardu-jawa.vercel.app/" target="_blank" class="text-gray-800 hover:text-yellow-600 font-medium py-2 px-1">ArduJawa</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 font-bold">MENU</button>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md relative z-10">
+        <div class="container mx-auto px-4 py-2">
+            <nav class="flex flex-col space-y-3 py-3">
+                <a href="#pelajari" class="text-gray-800 hover:text-yellow-600 font-medium py-1 px-1">Pelajari</a>
+                <a href="#download" class="text-gray-800 hover:text-yellow-600 font-medium py-1 px-1">Download</a>
+                <a href="#modifikasi" class="text-gray-800 hover:text-yellow-600 font-medium py-1 px-1">Modifikasi</a>
+                <a href="https://ardujawa.com" target="_blank" class="text-gray-800 hover:text-yellow-600 font-medium py-1 px-1">Ardujawa</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8 relative z-10">
+        <!-- Hero Section -->
+        <section class="mb-24 py-20 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 font-bali leading-tight">Memprogram Arduino dengan Bahasa Bali</h2>
+                <p class="text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">Library yang mengkonversi bahasa pemrograman Arduino ke bahasa Bali. Membuat arduino lebih mudah sekaligus melestarikan bahasa daerah.</p>
+                <div class="flex justify-center">
+                    <a href="#pelajari" class="btn-bali text-white py-4 px-8 rounded-full font-medium text-lg hover:scale-105 transform transition-transform">Mulai Belajar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn Section -->
+        <section id="pelajari" class="mb-20">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center font-bali">Tabel Konversi Ardubali</h2>
+            
+            <div class="bg-white rounded-xl shadow-md overflow-hidden mb-12 max-w-4xl mx-auto">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-red-600 text-white">
+                            <tr class="bg-yellow-700">
+                                <th class="py-3 px-4 text-left text-white">Bahasa Bali</th>
+                                <th class="py-3 px-4 text-left text-white">Arduino Asli</th>
+                                <th class="py-3 px-4 text-left text-white">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">keluaran</td>
+                                <td class="py-4 px-4">OUTPUT</td>
+                                <td class="py-4 px-4">Mode output</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">masukan</td>
+                                <td class="py-4 px-4">INPUT</td>
+                                <td class="py-4 px-4">Mode input</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">tegeh</td>
+                                <td class="py-4 px-4">HIGH</td>
+                                <td class="py-4 px-4">Nilai tinggi</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">endep</td>
+                                <td class="py-4 px-4">LOW</td>
+                                <td class="py-4 px-4">Nilai rendah</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">desimal</td>
+                                <td class="py-4 px-4">float</td>
+                                <td class="py-4 px-4">Tipe data pecahan</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">beneh</td>
+                                <td class="py-4 px-4">true</td>
+                                <td class="py-4 px-4">Nilai benar</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">pelih</td>
+                                <td class="py-4 px-4">false</td>
+                                <td class="py-4 px-4">Nilai salah</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">ngaturang</td>
+                                <td class="py-4 px-4">pinMode</td>
+                                <td class="py-4 px-4">Atur mode pin</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">nulisdigital</td>
+                                <td class="py-4 px-4">digitalWrite</td>
+                                <td class="py-4 px-4">Tulis nilai digital ke pin</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">antos</td>
+                                <td class="py-4 px-4">delay</td>
+                                <td class="py-4 px-4">Jeda waktu</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">macadigital</td>
+                                <td class="py-4 px-4">digitalRead</td>
+                                <td class="py-4 px-4">Baca nilai digital dari pin</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">mekawit</td>
+                                <td class="py-4 px-4">Serial.begin</td>
+                                <td class="py-4 px-4">Mulai komunikasi serial</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">cetak</td>
+                                <td class="py-4 px-4">Serial.print</td>
+                                <td class="py-4 px-4">Cetak ke serial</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">cetakln</td>
+                                <td class="py-4 px-4">Serial.println</td>
+                                <td class="py-4 px-4">Cetak ke serial (baris baru)</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">ngirim</td>
+                                <td class="py-4 px-4">analogWrite</td>
+                                <td class="py-4 px-4">Tulis nilai PWM ke pin</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">macanalog</td>
+                                <td class="py-4 px-4">analogRead</td>
+                                <td class="py-4 px-4">Baca nilai analog dari pin</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">antuk</td>
+                                <td class="py-4 px-4">for</td>
+                                <td class="py-4 px-4">Perulangan for</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">angke</td>
+                                <td class="py-4 px-4">int</td>
+                                <td class="py-4 px-4">Tipe data integer</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">fungsi</td>
+                                <td class="py-4 px-4">void</td>
+                                <td class="py-4 px-4">Tipe fungsi tanpa nilai balik</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">nyiapang()</td>
+                                <td class="py-4 px-4">setup()</td>
+                                <td class="py-4 px-4">Fungsi setup</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">abadi()</td>
+                                <td class="py-4 px-4">loop()</td>
+                                <td class="py-4 px-4">Fungsi loop utama</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">yening</td>
+                                <td class="py-4 px-4">if</td>
+                                <td class="py-4 px-4">Kondisi if</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">liyanan</td>
+                                <td class="py-4 px-4">else</td>
+                                <td class="py-4 px-4">Kondisi else</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-4 px-4 font-medium">liyanan_yening</td>
+                                <td class="py-4 px-4">else if</td>
+                                <td class="py-4 px-4">Kondisi else if</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Code Examples -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12 overflow-x-auto">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 font-bali">Contoh Program</h3>
+                    <div class="code-block text-white p-4 rounded-lg mb-4">
+                        <pre><code class="text-sm">
+
+fungsi nyiapang() {
+  mekawit(9600);  // Mulai komunikasi serial
+}
+
+fungsi abadi() {
+  cetakln("Om Swastyastu!"); 
+  antos(1000);               
+}
+                        </code></pre>
+                    </div>
+                    <p class="text-gray-600">Program sederhana untuk mencetak pesan ke Serial Monitor setiap 1 detik.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 font-bali"> Mencari bilangan genap dan ganjil</h3>
+                    <div class="code-block text-white p-4 rounded-lg mb-4">
+                        <pre><code class="text-sm">
+
+angke counter = 0;  // Variabel counter
+
+fungsi nyiapang() {
+  mekawit(9600);
+}
+
+fungsi abadi() {
+  counter = counter + 1;  // Tambah counter
+  cetak("Counter: ");
+  cetakln(counter);       // Cetak nilai counter
+  
+  yening (counter % 2 == 0) {
+    cetakln("Genap");
+  } liyanan {
+    cetakln("Ganjil");
+  }
+  
+  antos(500);  // Tunggu 0.5 detik
+}
+                        </code></pre>
+                    </div>
+                    <p class="text-gray-600">Program contoh menggunakan variabel dan operasi matematika.</p>
+                </div>
+            </div>
+
+            <!-- Video Documentation -->
+            <div class="mt-8 mb-12">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center font-bali">Dokumentasi Video</h3>
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden h-96 max-w-2xl mx-auto">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Y5iCrO2DTtg" 
+                    title="Demo Ardubali" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p class="text-gray-600 mt-4 text-center">Video ini berisi demonstrasi program Ardubali.</p>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center font-bali">Kuis Ardubali</h3>
+                
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Question 1 -->
+                    <div class="quiz-question p-4 border border-gray-200 rounded-lg">
+                        <p class="font-medium mb-3">1. Apa sintaks Ardubali untuk "digitalWrite" dalam Arduino?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q1" value="a" class="h-4 w-4 text-red-600">
+                                <span>maca</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q1" value="b" class="h-4 w-4 text-red-600">
+                                <span>nulisdigital</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q1" value="c" class="h-4 w-4 text-red-600">
+                                <span>ngaturang</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q1" value="d" class="h-4 w-4 text-red-600">
+                                <span>antos</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 2 -->
+                    <div class="quiz-question p-4 border border-gray-200 rounded-lg">
+                        <p class="font-medium mb-3">2. Fungsi apa yang digunakan untuk jeda waktu dalam Ardubali?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q2" value="a" class="h-4 w-4 text-red-600">
+                                <span>antuk</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q2" value="b" class="h-4 w-4 text-red-600">
+                                <span>antos</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q2" value="c" class="h-4 w-4 text-red-600">
+                                <span>maca</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q2" value="d" class="h-4 w-4 text-red-600">
+                                <span>ngirim</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 3 -->
+                    <div class="quiz-question p-4 border border-gray-200 rounded-lg">
+                        <p class="font-medium mb-3">3. Bagaimana menulis perulangan for dalam Ardubali?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q3" value="a" class="h-4 w-4 text-red-600">
+                                <span>fungsi (angke i = 0; i < 10; i++)</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q3" value="b" class="h-4 w-4 text-red-600">
+                                <span>antuk (angke i = 0; i < 10; i++)</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q3" value="c" class="h-4 w-4 text-red-600">
+                                <span>loop (angke i = 0; i < 10; i++)</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q3" value="d" class="h-4 w-4 text-red-600">
+                                <span>abadi (angke i = 0; i < 10; i++)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="quiz-question p-4 border border-gray-200 rounded-lg">
+                        <p class="font-medium mb-3">4. Apa sintaks Ardubali untuk "Serial.print"?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q4" value="a" class="h-4 w-4 text-red-600">
+                                <span>maca</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q4" value="b" class="h-4 w-4 text-red-600">
+                                <span>cetak</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q4" value="c" class="h-4 w-4 text-red-600">
+                                <span>ngirim</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q4" value="d" class="h-4 w-4 text-red-600">
+                                <span>mekawit</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="quiz-question p-4 border border-gray-200 rounded-lg">
+                        <p class="font-medium mb-3">5. Apa arti "yening" dalam Ardubali?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q5" value="a" class="h-4 w-4 text-red-600">
+                                <span>for</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q5" value="b" class="h-4 w-4 text-red-600">
+                                <span>if</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q5" value="c" class="h-4 w-4 text-red-600">
+                                <span>while</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q5" value="d" class="h-4 w-4 text-red-600">
+                                <span>switch</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button id="check-answers" class="btn-bali text-white py-2 px-6 rounded-full font-medium">Periksa Jawaban</button>
+                </div>
+                
+                <div id="quiz-results" class="mt-4 hidden p-4 bg-green-50 text-green-800 rounded-lg"></div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="py-12 bg-white rounded-xl shadow-md px-6 mb-12">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 font-bali">Download Ardubali v1.0.0</h2>
+                <p class="text-xl text-gray-600 mb-6">Download library terbaru untuk mulai memprogram Arduino dengan bahasa Bali</p>
+                
+                <div class="bg-gray-100 p-6 rounded-lg mb-6 text-left">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Cara Install Library:</h3>
+                    <ol class="list-decimal pl-5 space-y-2 text-gray-700">
+                        <li>Download file ZIP library Ardubali</li>
+                        <li>Buka Arduino IDE</li>
+                        <li>Pilih menu Sketch > Include Library > Add .ZIP Library</li>
+                        <li>Pilih file ZIP yang sudah didownload</li>
+                        <li>Library akan terinstall secara otomatis</li>
+                        <li>Restart Arduino IDE jika diperlukan</li>
+                    </ol>
+                </div>
+                
+                <a href="https://drive.google.com/file/d/1wnhhsvcE65vrx18EfRGr2fOgzcArRkAT/view?usp=sharing" download="Ardubali-1.0.0.zip" class="btn-bali inline-block text-white py-3 px-8 rounded-full font-medium text-lg">Download Ardubali v1.0.0</a>
+            </div>
+        </section>
+
+        <!-- Modify Section -->
+        <section id="modifikasi" class="py-12 bg-amber-50 rounded-xl px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 font-bali">Tutorial Modifikasi Ardubali</h2>
+                <p class="text-xl text-gray-600 mb-8">Pelajari cara mengembangkan library Ardubali melalui tutorial video di YouTube.</p>
+                
+                <a href="https://youtu.be/D_1FsvsgsHg?si=ivm8jBgJp06vfBsg" target="_blank" class="btn-bali inline-block text-white py-3 px-8 rounded-full font-medium text-lg">Tonton Sekarang</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-red-900 text-white py-8 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="font-bold">Ardubali</span>
+                    <p class="text-gray-400 mt-2 text-sm">Ngardi Arduino ngangge basa Bali</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>© 2025 Ardubali</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Quiz functionality
+        document.getElementById('check-answers').addEventListener('click', function() {
+            const answers = {
+                q1: 'b', // nulisdigital
+                q2: 'b', // antos
+                q3: 'b', // antuk
+                q4: 'b', // cetak
+                q5: 'b'  // if
+            };
+            
+            let score = 0;
+            const totalQuestions = Object.keys(answers).length;
+            
+            // Check each question
+            for (const question in answers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption && selectedOption.value === answers[question]) {
+                    score++;
+                }
+            }
+            
+            // Display results
+            const resultsDiv = document.getElementById('quiz-results');
+            resultsDiv.classList.remove('hidden');
+            resultsDiv.innerHTML = `
+                <p class="font-bold">Hasil Kuis:</p>
+                <p>Anda menjawab ${score} dari ${totalQuestions} pertanyaan dengan benar!</p>
+                ${score === totalQuestions ? '<p class="mt-2">Sampun becik! Anda sudah menguasai dasar Ardubali.</p>' : ''}
+            `;
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active tab
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('tab-active');
+                });
+                this.classList.add('tab-active');
+            });
+        });
+    </script>
+</body>
+</html>
